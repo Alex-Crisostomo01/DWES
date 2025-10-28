@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+<h2>Usuarios registrados</h2>
+
+<ul>
+  <li th:each="u : ${usuarios}">
+    <span th:text="${u.nombre}"></span> - <span th:text="${u.email}"></span>
+  </li>
+</ul>
+
+<a th:href="@{/formulario}">Agregar otro</a>
+</body>
+</html>
