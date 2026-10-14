@@ -1,0 +1,20 @@
+<form th:action =@{/etapa3} method="post">
+  <p>¿Cuál es tu color favorito?</p>
+
+  <input type="radio" id="rojo" name="color" value="rojo">
+  <label for="rojo">Rojo</label><br>
+
+  <input type="radio" id="azul" name="color" value="azul">
+  <label for="azul">Azul</label><br>
+
+  <input type="radio" id="verde" name="color" value="verde">
+  <label for="verde">Verde</label><br><br>
+
+  
+  <input  name="nombre"  th:value = "${nombre}" hidden>
+   <input  name="apellido" th:value = "${apellido}"hidden>
+  <input type="submit" value="Enviar">
+  <div th:if="${error}" style="color: red; ">
+      <p th:text="${error}"></p>
+  </div>
+</form>

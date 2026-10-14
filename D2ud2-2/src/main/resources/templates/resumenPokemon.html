@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen de Inscripción Pokémon</title>
+   
+</head>
+
+<body>
+	<h1>Pokemon Registrado con exito</h1>
+	<div>
+		<p>Nombre del pokemon : <span th:text = "${pokemon.nombre}"></span></p>
+		<p>Etapa de la evolucion : <span th:text = ${pokemon.evolucion}></span></p>
+		<p>Ataques que puede aprender : </p>
+		<ul th:if="${pokemon.ataques != null}">
+		    <li th:each="ataque : ${pokemon.ataques}" th:text="${ataque}">Lanzallamas</li>
+		</ul>
+	</div>
+	<br/>
+	<a th:href="@{/formPokemon}" class="btn-volver">Registrar otro Pokémon</a>
+</body>

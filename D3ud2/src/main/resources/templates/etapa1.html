@@ -1,0 +1,12 @@
+<form th:action=@{/etapa2} method="post">
+    <h2>Etapa 1: Datos Personales</h2>
+    
+    <label for="nombre">Nombre:</label>
+    <input type="text"  name="nombre"><br><br>
+	<label for = "apellido">Apellido : </label>
+	<input type="text" name="apellido"><br><br>
+    <button type="submit">Ir a Etapa 2</button>
+	<div th:if="${error}" style="color: red; ">
+	    <p th:text="${error}"></p>
+	</div>
+</form>

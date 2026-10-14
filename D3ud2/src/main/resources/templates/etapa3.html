@@ -1,0 +1,21 @@
+<form th:action=@{/etapaFinal} method="post">
+	
+	<h1>Selecciona tu tecnologia favorita</h1>
+	<input type="checkbox" name = "tecnologias" value="java">
+	<label for="java">Java</label>
+	<input type="checkbox" name = "tecnologias" value="Python">
+	<label for="java">Python</label>
+	<input type="checkbox" name = "tecnologias" value="JavaScript">
+	<label for="java">JavaScript</label>
+	<input type="checkbox" name = "tecnologias" value="Spring Boot">
+	<label for="java">Spring Boot</label>
+	
+	<button type="submit">Ir a etapa final</button>
+	
+	<input  name="nombre"  th:value = "${nombre}" hidden>
+	<input  name="apellido" th:value = "${apellido}"hidden>
+	<input name="color" th:value ="${color}" hidden >
+	<div th:if="${error}" style="color: red; ">
+	    <p th:text="${error}"></p>
+	</div>
+</form>

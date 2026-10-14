@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Pokémon - Desafío 2 UD2</title>
+</head>
+<body>
+		<h1>Inscripción de Pokémon</h1>
+		
+		<form th:action = "@{/formPokemon}" th:object = "${pokemon}" method="post"> 
+							<!-- 1. CAMPO NOMBRE -->
+						<label for="nombre">Nombre del Pokémon:</label>
+						<input type="text" th:field ="*{nombre}"/>
+						
+						<span class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>	
+							<!-- 2. CAMPO EVOLUCION (Texto) -->
+						<br>
+						<label>Etapa de Evolución:</label>
+						<div>
+						    <input type="radio" th:field="*{evolucion}" value="Base / Inicial" id="evo1" />
+						    <label for="evo1">Base / Inicial</label>
+						</div>
+						<div>
+						    <input type="radio" th:field="*{evolucion}" value="Primera Evolución" id="evo2" />
+						    <label for="evo2">Primera Evolución</label>
+						</div>
+						<div>
+						    <input type="radio" th:field="*{evolucion}" value="Evolución Final" id="evo3" />
+						    <label for="evo3">Evolución Final</label>
+						</div>
+						<span class="error" th:if="${#fields.hasErrors('evolucion')}" th:errors="*{evolucion}"></span>
+							<!-- 3. CAMPO ATAQUES-->
+							
+							<label>Ataques Conocidos (selecciona al menos uno):</label>
+							   							<br>
+							    <input type="checkbox" th:field="*{ataques}" value="Lanzallamas" id="atk1" />
+							    <label for="atk1">Lanzallamas</label>
+						<br>
+							
+							    <input type="checkbox" th:field="*{ataques}" value="Hidrobomba" id="atk2" />
+							    <label for="atk2">Hidrobomba</label>
+														<br>	
+							
+							    <input type="checkbox" th:field="*{ataques}" value="Rayos / Trueno" id="atk3" />
+							    <label for="atk3">Rayos / Trueno</label>
+															<br>
+							
+							    <input type="checkbox" th:field="*{ataques}" value="Hoja Afilada" id="atk4" />
+							    <label for="atk4">Hoja Afilada</label>
+								<br>
+							
+							<span class="error" th:if="${#fields.hasErrors('ataques')}" th:errors="*{ataques}"></span>
+														<br>
+						<button type="submit">Registrar Pokémon</button>
+						<button type="reset">Limpiar</button>
+		</form>
+	
+</body>

@@ -1,0 +1,17 @@
+# Ignorar configuración del Workspace de Eclipse
+.metadata/
+
+# Ignorar metadatos de proyectos de Eclipse
+**/.settings/
+**/.classpath
+**/.project
+**/.factorypath
+
+# Ignorar compilaciones de Spring Boot / Maven / Gradle
+**/target/
+**/build/
+**/bin/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
