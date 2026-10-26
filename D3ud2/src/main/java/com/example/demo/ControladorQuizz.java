@@ -52,17 +52,44 @@ public class ControladorQuizz {
 	}
 	
 	
+	
+	@PostMapping("/etapa4")
+	public String etapa4(@RequestParam(name = "nombre", required = false)  String nombre , @RequestParam(name = "apellido", required = false) String apellido , 	@RequestParam(name= "color", required = false) String color , @RequestParam(name = "tecnologias", required = false) List<String> tecnologias , Model model) {
+		
+		model.addAttribute("nombre" , nombre);
+		model.addAttribute("apellido" , apellido);
+		model.addAttribute("color", color);
+		String tech = ""; 
+		if (tecnologias == null || tecnologias.isEmpty()) {
+			model.addAttribute("error" , "Error no has seleccionado ninguna tecnologia");
+			return "etapa3";
+		}else {
+		
+		for (int i=0;i<tecnologias.size();i++) {
+			tech += tecnologias.get(i) + ", ";
+		}
+		}
+		model.addAttribute("tech" ,tech);
+		return "etapa4";
+	
+	}
+	
+	
 	@PostMapping("/etapaFinal")
-	public String etapaFinal(@RequestParam(name = "nombre", required = false)  String nombre , @RequestParam(name = "apellido", required = false) String apellido , 	@RequestParam(name= "color", required = false) String color , @RequestParam(name = "tecnologias", required = false) List<String> tecnologias ,  Model model) {
+	public String etapaFinal(@RequestParam(name = "nombre", required = false)  String nombre , @RequestParam(name = "apellido", required = false) String apellido , 	@RequestParam(name= "color", required = false) String color , @RequestParam(name = "tecnologias", required = false) String  tech , @RequestParam(name= "numero", required = false) String numero , Model model) {
 		
-		
+		if (numero.isBlank() || numero.isEmpty()) {
+			model.addAttribute("error", "No has seleccionado ningun numero");
+			return "etapa4";
+		}
 		
 		List<String> datos = new ArrayList<>();
 		
 		datos.add("Nombre : " + nombre + " " + apellido);
 		datos.add("Color favorito : " + color);
-		String tech = (tecnologias!= null && !tecnologias.isEmpty()) ? String.join(",", tecnologias) : "Ninguna seleccionada";
+		
 		datos.add("Tecnologias seleccionada : " + tech);
+		datos.add("Numero Favorito :  "+  numero);
 		
 		
 		model.addAttribute("listaDatos" , datos);
