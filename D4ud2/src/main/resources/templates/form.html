@@ -1,0 +1,14 @@
+<form th:action=@{/resultado} method="get">
+    <h2>Etapa 1: Datos Personales</h2>
+    
+    <label for="nombre">Nombre:</label>
+    <input type="text"  name="nombre"><br><br>
+	<label for = "apellido">Apellido : </label>
+	<input type="text" name="apellido"><br><br>
+    <button type="submit">Ir a Resultado</button>
+</form>
+
+
+<a th:href="@{'/resultado?nombre=' + ${nombreCodificado} + '&apellido=' + ${apellidoCodificado}}">
+    Probar enlace con QueryString
+</a>
