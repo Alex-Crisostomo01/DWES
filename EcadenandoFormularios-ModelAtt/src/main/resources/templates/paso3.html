@@ -1,0 +1,16 @@
+<form th:action="@{/resultado}" th:object="${inscripcion}" method="post">
+    <input type="hidden" th:field="*{nombre}">
+    <input type="hidden" th:field="*{edad}">
+    <input type="hidden" th:field="*{turno}">
+
+    <p>Elige tus actividades:</p>
+    <label><input type="checkbox" th:field="*{actividades}" value="Senderismo"> Senderismo</label><br>
+    <label><input type="checkbox" th:field="*{actividades}" value="Natación"> Natación</label><br>
+    <label><input type="checkbox" th:field="*{actividades}" value="Tiro con arco"> Tiro con arco</label><br>
+    <label><input type="checkbox" th:field="*{actividades}" value="Escalada"> Escalada</label><br>
+
+    <span th:if="${#fields.hasErrors('actividades')}" th:errors="*{actividades}" style="color:red"></span>
+    <br>
+    <button type="submit">Finalizar</button>
+	<button type="submit" th:formaction="@{/volver2}">Atrás</button>
+</form>

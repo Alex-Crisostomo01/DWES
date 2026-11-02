@@ -1,0 +1,12 @@
+<ol>
+	<li th:each="r : ${resumen}" th:text="${r}"></li>
+</ol>
+<form th:action="@{/volver3}" th:object="${animal}" method="post">
+	<input type="hidden" th:field="*{dueño}">
+	<input type="hidden" th:field="*{telefono}">
+	<input type="hidden" th:field="*{nombre}">
+	<input type="hidden" th:field="*{raza}">
+	<input type="hidden" th:field="*{urgencia}">
+	<input th:each="s: *{servicio}" type="hidden" name="servicio" th:value="${s}">
+	<button type="submit">Volver</button>
+</form>

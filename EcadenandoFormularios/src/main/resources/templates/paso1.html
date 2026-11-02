@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campamento - Paso 1</title>
+</head>
+<body>
+    <h1>Paso 1: Datos personales</h1>
+
+    <form th:action="@{/paso2}" method="post">
+        <label>Nombre:
+            <input type="text" name="nombre" th:value="${nombre}">
+        </label>
+        <br>
+        <label>Edad:
+            <input type="number" name="edad" th:value="${edad}">
+        </label>
+        <br>
+        <p th:if="${error}" th:text="${error}" style="color:red"></p>
+        <button type="submit">Siguiente</button>
+    </form>
+</body>

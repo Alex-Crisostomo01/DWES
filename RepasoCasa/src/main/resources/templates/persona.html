@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+</head>
+<body>
+
+  <form th:object="${persona}" th:action="@{resultado}" method="post">
+	
+	Nombre<input type="text" th:field = "*{nombre}" >
+	
+	Edad <input type="number" th:field="*{edad}">
+	
+	email <input type="text" th:field="*{email}">
+ 	
+	<button type="submit">Pasar a resultado</button>
+  </form>
+
+</body>
+</html>

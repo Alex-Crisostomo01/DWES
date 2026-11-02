@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+	<style>
+		.caro { color: red; }
+	</style>
+</head>
+<body>
+
+	<p>Producto con id: <span th:text="${id}"></span></p>
+
+	<ul>
+		
+		<li th:each="p : ${productos}" th:text="${p.nombre} + '-' +  ${p.precio}" th:classappend="${p.precio>100} ? 'caro'"></li> 
+			
+	</ul>
+		<p th:if="${productos.isEmpty()}">no hay productos</p>
+
+</body>
+</html>

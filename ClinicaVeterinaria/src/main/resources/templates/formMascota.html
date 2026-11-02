@@ -1,0 +1,21 @@
+<form th:action="@{/formCita}" th:object="${animal}" method="post">
+	
+	 <!--Datos ocultos -->
+	<input type="hidden" th:field="*{dueño}">
+	<input type="hidden" th:field="*{telefono}">
+	<label>Nombre de la mascota
+			<input type="text" th:field="*{nombre}">
+	</label>
+	<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" ></p>
+	<select th:field="*{raza}" >
+		<option value="">-- Elige una raza --</option>
+		<option value="perro">Perro</option>
+		<option value="gato">Gato</option>
+		<option value="conejo">Conejo</option>
+		<option value="otro">Otro</option>
+	</select>
+	<p th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}"></p>
+	<button type="submit">Enviar</button>
+	
+	<button type="submit" th:formaction="@{/volver1}">Volver</button>
+</form>

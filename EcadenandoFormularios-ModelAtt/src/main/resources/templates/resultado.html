@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campamento - Resumen</title>
+</head>
+<body>
+    <h1>Resumen de tu inscripción</h1>
+    <ol>
+        <li th:each="dato : ${resumen}" th:text="${dato}"></li>
+    </ol>
+	<form th:action="@{/volver3}" th:object="${inscripcion}" method="post">
+	    <input type="hidden" th:field="*{nombre}">
+	    <input type="hidden" th:field="*{edad}">
+	    <input type="hidden" th:field="*{turno}">
+	    <input th:each="a : *{actividades}" type="hidden" name="actividades" th:value="${a}">
+	    <button type="submit">Atrás</button>
+	</form>
+</body>
+</html>

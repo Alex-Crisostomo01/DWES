@@ -1,0 +1,15 @@
+<form th:action="@{/paso3}" th:object="${inscripcion}" method="post">
+    <input type="hidden" th:field="*{nombre}">
+    <input type="hidden" th:field="*{edad}">
+	<input th:each="a : *{actividades}" type="hidden" name="actividades" th:value="${a}">
+
+    <p>Elige turno:</p>
+    <label><input type="radio" th:field="*{turno}" value="Julio"> Julio</label><br>
+    <label><input type="radio" th:field="*{turno}" value="Agosto"> Agosto</label><br>
+    <label><input type="radio" th:field="*{turno}" value="Septiembre"> Septiembre</label><br>
+
+    <span th:if="${#fields.hasErrors('turno')}" th:errors="*{turno}" style="color:red"></span>
+    <br>
+    <button type="submit">Siguiente</button>
+		<button type="submit" th:formaction="@{/volver1}">Atrás</button>
+</form>

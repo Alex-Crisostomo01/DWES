@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campamento - Resumen</title>
+</head>
+<body>
+    <h1>Resumen de tu inscripción</h1>
+    <ol>
+        <li th:each="dato : ${resumen}" th:text="${dato}"></li>
+    </ol>
+</body>
+</html>

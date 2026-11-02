@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campamento - Paso 2</title>
+</head>
+<body>
+	<h1>Paso 2 : Turno</h1>
+	
+	<form th:action="@{/paso3}" method="post">
+		
+		<input type="hidden" name="nombre" th:value="${nombre}" >
+		<input type="hidden" name="edad" th:value="${edad}" >
+		
+		<p>Elige turno:</p>
+		<label><input type="radio" name="turno" value="Julio"> Julio</label><br>
+		<label><input type="radio" name="turno" value="Agosto"> Agosto</label><br>
+		<label><input type="radio" name="turno" value="Septiembre"> Septiembre</label><br>
+		<p th:if="${error}" th:text="${error}" style="color:red"></p>
+		<button type="submit">Siguiente</button>
+	</form>

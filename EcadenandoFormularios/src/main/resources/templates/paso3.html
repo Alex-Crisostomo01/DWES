@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campamento - Paso 3</title>
+</head>
+<body>
+    <h1>Paso 3: Actividades</h1>
+
+    <form th:action="@{/resultado}" method="post">
+        <input type="hidden" name="nombre" th:value="${nombre}">
+        <input type="hidden" name="edad" th:value="${edad}">
+        <input type="hidden" name="turno" th:value="${turno}">
+
+        <p>Elige tus actividades:</p>
+        <label><input type="checkbox" name="actividades" value="Senderismo"> Senderismo</label><br>
+        <label><input type="checkbox" name="actividades" value="Natación"> Natación</label><br>
+        <label><input type="checkbox" name="actividades" value="Tiro con arco"> Tiro con arco</label><br>
+        <label><input type="checkbox" name="actividades" value="Escalada"> Escalada</label><br>
+		
+		
+				<button type="submit">Finalizar</button>
+				
+		<p th:if="${error}" th:text="${error}" style="color:red"></p>
+				
+    </form>

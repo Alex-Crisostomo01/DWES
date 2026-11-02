@@ -1,0 +1,14 @@
+<form th:action="@{/formMascota}" th:object="${animal}" method="post">
+	
+	<label>Nombre del dueño
+		<input type="text" th:field="*{dueño}">
+	</label>
+	<p th:if="${#fields.hasErrors('dueño')}" th:errors="*{dueño}"></p>
+	<label>Numero de telefono
+		<input type="text" th:field="*{telefono}">
+	</label>
+	<p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>	
+	
+	<button type="submit">Enviar</button>	
+	
+</form>

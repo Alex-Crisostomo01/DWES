@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Paso 1</title>
+</head>
+<body>
+	
+	<form th:action="@{/paso2}" th:object="${inscripcion}" method="post">
+		<input type="hidden" th:field="*{turno}">
+		<input th:each="a : *{actividades}" type="hidden" name="actividades" th:value="${a}">
+
+		<label>
+			Nombre<input type="text" th:field="*{nombre}"
+		</label>
+		<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">error</p>
+		<label>
+			Edad
+			<input type="number" th:field="*{edad}"		
+		</label>
+		<p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></p>
+		
+		<button type="submit">Enviar</button>
+	</form>
+	
+</body>
