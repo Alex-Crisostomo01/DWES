@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Resumen</title></head>
+<body>
+    <h1>Resumen de tus datos</h1>
+    <ul>
+        <li>Nombre: <span th:text="${nombre}"></span></li>
+        <li>Email: <span th:text="${email}"></span></li>
+        <li>Ciudad: <span th:text="${ciudad}"></span></li>
+        <li>Teléfono: <span th:text="${telefono}"></span></li>
+        <li>Color favorito: <span th:text="${color}"></span></li>
+        <li>Comentario: <span th:text="${comentario}"></span></li>
+    </ul>
+    <a href="/">Empezar de nuevo</a>
+</body>
+</html>
