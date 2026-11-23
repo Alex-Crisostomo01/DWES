@@ -1,1 +1,16 @@
-<p>Hola</p>
+<form method="post" th:action="@{/login}">
+	
+	<span th:if="${error!= null}" th:text="${error}" style="color:red"></span>
+	<br>
+	<label>
+		Usuario
+		<input type="text" name="usuario">
+	</label>
+	<br>
+	<label>
+		Contraseña
+		<input type="password" name="passwd">
+	</label>
+	
+	<button type="submit">Enviar</button>	
+</form>
