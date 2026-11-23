@@ -1,5 +1,6 @@
 package org.goya.daw2.ud3;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,12 @@ import jakarta.servlet.http.HttpSession;
 public class Controlador {
 	private static final String USUARIO = "alexDev";
 	private static final String PASSWD = "goya2026";
+	private static final String HASKOK = "$2a$10$o3Wmh.49RQvIksHOsqnRMutKeis.JpWiGFAR2GNbT8iOu8gAYHmoO";
+	
 	
 	@GetMapping("/")
 	public String inicio(HttpSession sesion , Model model) {
-		
+		System.out.println(b.encode(PASSWD));
 		if(sesion.getAttribute("usuario") != null) {
 			model.addAttribute("pagina" , "inicio");
 			model.addAttribute("nombre" , sesion.getAttribute("usuario"));
@@ -57,7 +60,6 @@ public class Controlador {
 			return "privada";
 		}
 		
-		
 		return "login";
 	}
 	
@@ -65,7 +67,7 @@ public class Controlador {
 	public String compruebaSession(@RequestParam(name ="usuario") String usuario ,
 			@RequestParam(name = "passwd") String passwd , HttpSession sesion , 
 			Model model) {
-		if(usuario.equals(USUARIO) && passwd.equals(PASSWD)) {
+		if(usuario.equals(USUARIO) && b.matches(passwd, HASKOK)) {
 			sesion.setAttribute("usuario", usuario);
 			return "redirect:/";
 		}
@@ -78,4 +80,7 @@ public class Controlador {
 		sesion.invalidate();
 		return "redirect:/login";
 	}
+	
+	
+	BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 }
