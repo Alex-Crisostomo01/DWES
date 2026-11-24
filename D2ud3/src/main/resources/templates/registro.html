@@ -1,0 +1,19 @@
+<h1>Registro</h1>
+
+
+<form method="post" th:action="@{/registro}">
+	
+	<span th:if="${error!= null}" th:text="${error}" style="color:red"></span>
+	<br>
+	<label>
+		Usuario
+		<input type="text" name="usuario">
+	</label>
+	<br>
+	<label>
+		Contraseña
+		<input type="password" name="passwd">
+	</label>
+	
+	<button type="submit">Registrar</button>	
+</form>

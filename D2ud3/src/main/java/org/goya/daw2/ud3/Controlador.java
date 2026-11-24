@@ -1,5 +1,8 @@
 package org.goya.daw2.ud3;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,31 @@ public class Controlador {
 	private static final String PASSWD = "goya2026";
 	private static final String HASKOK = "$2a$10$o3Wmh.49RQvIksHOsqnRMutKeis.JpWiGFAR2GNbT8iOu8gAYHmoO";
 	
+	private Map<String, String> usuarios = new HashMap<String ,String>();
+	
+	public Controlador() {
+		usuarios.put(USUARIO, HASKOK);
+		usuarios.put("kerin", null);
+		usuarios.put("manuel", null);
+		usuarios.put("alex", null);
+		usuarios.put("julian", null);
+		usuarios.put("javi", null);
+		usuarios.put("alvaro", null);
+	}
+	@GetMapping("/registro")
+	public String registro() {
+		
+		return "registro";
+	}
+	
+	@PostMapping("/registro")
+	public String RegistroUsuario(@RequestParam(name ="usuario") String usuario ,
+			@RequestParam(name = "passwd") String passwd ,  
+			Model model) {
+		usuarios.put(usuario, b.encode(passwd));
+		model.addAttribute("mensaje" , "Regisstro Correcto");
+		return "login";
+	}
 	
 	@GetMapping("/")
 	public String inicio(HttpSession sesion , Model model) {
@@ -67,7 +95,10 @@ public class Controlador {
 	public String compruebaSession(@RequestParam(name ="usuario") String usuario ,
 			@RequestParam(name = "passwd") String passwd , HttpSession sesion , 
 			Model model) {
-		if(usuario.equals(USUARIO) && b.matches(passwd, HASKOK)) {
+		
+		String hash = usuarios.get(usuario);
+		
+		if(hash!=null && b.matches(passwd, hash)) {
 			sesion.setAttribute("usuario", usuario);
 			return "redirect:/";
 		}
