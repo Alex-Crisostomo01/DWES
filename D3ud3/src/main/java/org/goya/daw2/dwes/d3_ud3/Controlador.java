@@ -2,10 +2,11 @@ package org.goya.daw2.dwes.d3_ud3;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class Controlador {
-	   @GetMapping({"/", "/home"})
+	   @RequestMapping({"/", "/home"})
 	    public String home() {
 	        return "home";    // home.html
 	    }
